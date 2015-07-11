@@ -11,28 +11,52 @@
   </header>
   <div class="scoreboard">
     <!--scoreboard includes game number, player names, player scores, timer if included-->
-    <p>Game: </p>
-    <p>Player 1</p>
-    <p>Timer</p>
+    <!--maybe use <label> for game, name, timer, etc.-->
+    <ul class="game_info">
+      <li>
+        <p>Game: </p>
+        <p id="gameNumber">1</p>
+      </li>
+      <li>
+        <p>Player 1</p>
+        <p id="player1Name">Jared</p>
+      </li>
+      <li>
+        <p>Timer</p>
+        <p id="timer">2:00</p>
+      </li>
+    </ul>
   </div>
-  <div class="game_options">
-  <!--game options include back of card design, new game button, difficulty levels-->
-    <button>New Game</button>
-    <p>Deck Design</p>
-    <p>How Many Cards</p>
-  </div>
+  <div class="container">
+    <div class="game_options">
+    <!--game options include back of card design, new game button, difficulty levels-->
+      <button>New Game</button>
+      <p>Deck Design</p>
+      <p>How Many Cards</p>
+    </div>
 
-  <div class="game_board">
-    <p>card</p>
-    <p>card</p>
-    <p>card</p>
-    <p>card</p>
-    <p>card</p>
-    <p>card</p>
-    <p>card</p>
-    <p>card</p>
-    <p>card</p>
-    <p>card</p>
+    <div class="game_board">
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+      <p class="card">card</p>
+    </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
