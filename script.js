@@ -1,21 +1,10 @@
 //when window loads, display message in header "please select options and click new game to start"
-//change background image of cards depending on option clicked - done
-  //only one option can be checked at once - radio buttons
-var deckImage;
-$("input[name='deckDesign']").change(function(){
-  if ($(this).val() === "cats"){
-    $("p.card").css("background-image", "url(images/spacecat.jpg)");
-    deckImage = images/spacecat.jpg;
-  }
-  if ($(this).val() === "logo"){
-    $("p.card").css("background-image", "url(images/ga_logo.png)");
-    deckImage = images/ga_logo.png;
-  }
-  if ($(this).val() === "bob"){
-    $("p.card").css("background-image", "url(images/gene2.gif)");
-    deckImage = images/gene2.gif;
-  }
+
+$("input[name='deckDesign']").on("click", function(){
+  var chosenDeck = $("input[name=deckDesign]:checked").val();
+  $("div.game_board p").removeClass().addClass(chosenDeck);
 });
+
 //change number of cards (<p>) depending on option clicked
 //when and where will the user enter name
   //prompt for it (when)
@@ -39,7 +28,7 @@ var firstCardValue;
 var secondCard;
 var secondCardValue;
 //when a card is clicked
-$("p.card").on("click", function(){
+$("div.game_board p").on("click", function(){
   if(clickCounter === 0){
     clickCounter++;
     console.log(clickCounter);
