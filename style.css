@@ -33,7 +33,7 @@ div.container{
 .game_info li{
   float: left;
   width: 30%;
-  margin-right: 3%;
+  margin: auto;
 }
 
 .game_options{
