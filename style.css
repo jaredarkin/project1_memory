@@ -54,7 +54,12 @@ p.card{
   height: 100px;
   margin: 1em;
   border: 1px solid blue;
+  background-color: white;
   background-image: url(images/ga_logo.png);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+p.flipped{
+  background-image: none;
 }
