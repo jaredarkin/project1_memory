@@ -47,6 +47,7 @@ div.container{
   flex: 1;
 }
 
+/*need to make sure cards are in a square*/
 p.card{
   display: inline-block;
   width: 100px;
@@ -55,5 +56,5 @@ p.card{
   border: 1px solid blue;
   background-image: url(images/ga_logo.png);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
