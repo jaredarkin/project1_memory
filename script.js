@@ -4,6 +4,10 @@ $("input[name='deckDesign']").on("click", function(){
   $("div.game_board td").removeClass().addClass(chosenDeck);
 });
 
+$("input[name='numberOfCards']").on("click", function(){
+  var gameSize = $("input[name=numberOfCards]:checked").val();
+});
+
 //change number of cards (<p>) depending on option clicked
 //when and where will the user enter name
   //prompt for it (when)
@@ -36,13 +40,13 @@ $("div.game_board td").on("click", function(){
       $(this).addClass("flipped");
       firstCard = $(this);
       firstCardValue = $(this).val();
-      firstCard.css("background-color", matchLibrary[firstCardValue]);
+      firstCard.css("background-color", colorLibrary[firstCardValue]);
     } else {
       clickCounter = 0;
       $(this).addClass("flipped");
       secondCard = $(this);
       secondCardValue = $(this).val();
-      secondCard.css("background-color", matchLibrary[secondCardValue]);
+      secondCard.css("background-color", colorLibrary[secondCardValue]);
       compareCards();
     }
 
@@ -79,15 +83,25 @@ function assignValues(){
   }
 };
 
-var matchLibrary = {
-  1: "red",
-  2: "blue",
-  3: "yellow",
-  4: "green",
-  5: "violet",
-  6: "lemonchiffon",
-  7: "black",
-  8: "aquamarine"
+var colorLibrary = {
+  1: "#ff0000",
+  2: "#0000ff",
+  3: "#ffff00",
+  4: "#008000",
+  5: "#ee82ee",
+  6: "#fffacd",
+  7: "#000000",
+  8: "#7fffd4",
+  9: "#ff6347",
+  10: "#7fff00",
+  11: "#deb887",
+  12: "#ff8c00",
+  13: "#ff1493",
+  14: "#dcdcdc",
+  15: "#4b0082",
+  16: "#f08080",
+  17: "#ffe4e1",
+  18: "#808000"
 }
 
 function shuffle(array) {
