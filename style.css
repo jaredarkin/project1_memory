@@ -47,15 +47,15 @@ div.container{
   flex: 1;
 }
 
-#defaultTable{
+#defaultImage{
   width: 400px;
   height: 400px;
-  background-image: url(images/ga_logo.png);
+  border: 1px solid yellow;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-/*need to make sure cards are in a square*/
 div.game_board td{
-  /*display: inline-block;*/
   width: 100px;
   height: 100px;
   margin: 1em;
