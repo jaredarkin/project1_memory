@@ -1,8 +1,8 @@
 //when window loads, display message in header "please select options and click new game to start"
-
+// can't click cards until new game has been clicked
 $("input[name='deckDesign']").on("click", function(){
   var chosenDeck = $("input[name=deckDesign]:checked").val();
-  $("div.game_board p").removeClass().addClass(chosenDeck);
+  $("div.game_board td").removeClass().addClass(chosenDeck);
 });
 
 //change number of cards (<p>) depending on option clicked
@@ -27,8 +27,9 @@ var firstCard;
 var firstCardValue;
 var secondCard;
 var secondCardValue;
+$("#guesses").text(guessCounter);
 //when a card is clicked
-$("div.game_board p").on("click", function(){
+$("div.game_board td").on("click", function(){
   if(clickCounter === 0){
     clickCounter++;
     console.log(clickCounter);
@@ -57,6 +58,7 @@ $("div.game_board p").on("click", function(){
   //click counter resets to 0
 function compareCards(){
   guessCounter++;
+  $("#guesses").text(guessCounter);
   if (firstCardValue === secondCardValue){
     console.log("youve got a match");
   } else {
@@ -66,7 +68,7 @@ function compareCards(){
                 firstCard.removeClass("flipped");
                 secondCard.removeClass("flipped");
             },
-            2000);
+            1500);
   }
 }
   //click counter increases to 1
