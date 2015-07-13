@@ -47,6 +47,12 @@ div.container{
   flex: 1;
 }
 
+#defaultTable{
+  width: 400px;
+  height: 400px;
+  background-image: url(images/ga_logo.png);
+}
+
 /*need to make sure cards are in a square*/
 div.game_board td{
   /*display: inline-block;*/
