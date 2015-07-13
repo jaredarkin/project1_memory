@@ -12,7 +12,16 @@ $("input[name='deckDesign']").on("click", function(){
 $("input[name='boardSize']").on("click", function(){
   var numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
   console.log(numberOfRows);
+  $("table").empty();
+  for (i = 0; i < numberOfRows; i++){
+    $("table").append("<tr></tr>");
+  }
+  for (j = 0; j < numberOfRows; j++){
+    $("tr").append("<td></td>");
+    $("div.game_board td").addClass("defaultDeck");
+  }
 });
+
 
 $("#nameInput").on("keypress", function(event){
   if(event.keyCode === 13){
