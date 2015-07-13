@@ -3,9 +3,15 @@ $("input[name='deckDesign']").on("click", function(){
   var chosenDeck = $("input[name=deckDesign]:checked").val();
   $("div.game_board td").removeClass().addClass(chosenDeck);
 });
-
-$("input[name='numberOfCards']").on("click", function(){
-  var gameSize = $("input[name=numberOfCards]:checked").val();
+//get value from board size radio button - sizeone or size two
+//use that value to get number of rows from size library
+//store that value in numberofrows variable
+//append that many tr tags to div.game_board
+//append same number of td tags to each tr tag
+//make sure each td tag has class equal to deckDesign
+$("input[name='boardSize']").on("click", function(){
+  var numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
+  console.log(numberOfRows);
 });
 
 $("#nameInput").on("keypress", function(event){
@@ -105,6 +111,13 @@ var colorLibrary = {
   16: "#f08080",
   17: "#ffe4e1",
   18: "#808000"
+}
+
+var sizeLibrary = {
+  defaultSize: 4,
+  sizeOne: 4,
+  sizeTwo: 6,
+  sizeThree: 8
 }
 
 function shuffle(array) {

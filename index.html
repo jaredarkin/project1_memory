@@ -15,8 +15,11 @@
     <!--maybe use <label> for game, name, timer, etc.-->
     <ul class="game_info">
       <li>
-        <p>Player Name:</p>
-        <p id="playerName">Jared</p>
+        <form>
+          <p>Player name:<p>
+          <input type="text" id="nameInput">
+          <p id="playerName"></p>
+        </form>
       </li>
       <li>
         <p>Guesses: </p>
@@ -37,10 +40,10 @@
       <input type="radio" name="deckDesign" value="deckTwo"> Cats<br>
       <input type="radio" name="deckDesign" value="deckThree"> Bob's Burgers<br>
     </form>
-    <form class="numberOfCards">
+    <form class="boardSize">
       <p>How Many Cards</p>
-      <input type="radio" name="numberOfCards" value="sizeOne" checked> 16<br>
-      <input type="radio" name="numberOfCards" value="sizeTwo"> 36<br>
+      <input type="radio" name="boardSize" value="sizeOne" checked> 4 x 4<br>
+      <input type="radio" name="boardSize" value="sizeTwo"> 6 x 6<br>
     </form>
       <button id="newGame">New Game</button>
     </div>
