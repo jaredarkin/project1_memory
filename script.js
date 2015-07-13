@@ -1,7 +1,7 @@
-
+var numberOfRows;
 $(".option_forms input").on("click", function(){
   var chosenDeck = $("input[name=deckDesign]:checked").val();
-  var numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
+  numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
   if (numberOfRows) {
     $("div.game_board td").removeClass().addClass(chosenDeck);
     $("#defaultImage").css("display", "none");
@@ -29,10 +29,10 @@ $("#nameInput").on("keypress", function(event){
 
 
 $("#newGame").on("click", function(){
-  var numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
   if (numberOfRows){
     $("#newGameMessage").css("visibility", "hidden");
     $("input:radio").attr("disabled" , true);
+    buildCardLibrary();
     assignValues();
     //startTimer();
   }
@@ -87,7 +87,13 @@ function compareCards(){
   }
 };
 
-var cardLibrary = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+var cardLibrary = [];
+function buildCardLibrary(){
+  for (i = 1; i <= (numberOfRows*numberOfRows)/2; i++){
+    cardLibrary.push(i);
+    cardLibrary.push(i);
+  }
+}
 function assignValues(){
   shuffle(cardLibrary);
   console.log(cardLibrary);
@@ -97,28 +103,27 @@ function assignValues(){
 };
 
 var colorLibrary = {
-  1: "#ff0000",
-  2: "#0000ff",
-  3: "#ffff00",
-  4: "#008000",
-  5: "#ee82ee",
-  6: "#fffacd",
-  7: "#000000",
-  8: "#7fffd4",
-  9: "#ff6347",
-  10: "#7fff00",
-  11: "#deb887",
-  12: "#ff8c00",
-  13: "#ff1493",
-  14: "#dcdcdc",
-  15: "#4b0082",
-  16: "#f08080",
-  17: "#ffe4e1",
-  18: "#808000"
+  1: "Red",
+  2: "Blue",
+  3: "Yellow",
+  4: "Green",
+  5: "Violet",
+  6: "Lemonchiffon",
+  7: "Black",
+  8: "Aquamarine",
+  9: "Tomato",
+  10: "Chartreuse",
+  11: "Burlywood",
+  12: "DarkOrange",
+  13: "DeepPink",
+  14: "Gainsboro",
+  15: "Indigo",
+  16: "LightCoral",
+  17: "MistyRose",
+  18: "Olive"
 }
 
 var sizeLibrary = {
-  defaultSize: 4,
   sizeOne: 4,
   sizeTwo: 6,
   sizeThree: 8
