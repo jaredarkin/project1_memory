@@ -1,34 +1,21 @@
-// can't click cards until new game has been clicked
-/*$("input[name='deckDesign']").on("click", function(){
-  var chosenDeck = $("input[name=deckDesign]:checked").val();
-  $("div.game_board td").removeClass().addClass(chosenDeck);
-});
 
-$("input[name='boardSize']").on("click", function(){
-  var numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
-  console.log(numberOfRows);
-  $("table").empty();
-  for (i = 0; i < numberOfRows; i++){
-    $("table").append("<tr></tr>");
-  }
-  for (j = 0; j < numberOfRows; j++){
-    $("tr").append("<td></td>");
-    $("div.game_board td").addClass("defaultDeck");
-  }
-});*/
 $(".option_forms input").on("click", function(){
   var chosenDeck = $("input[name=deckDesign]:checked").val();
-  $("div.game_board td").removeClass().addClass(chosenDeck);
   var numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
-  console.log(numberOfRows);
-  $("tr").detach();
-  for (i = 0; i < numberOfRows; i++){
-    $("div.game_board table").append("<tr></tr>");
-  }
-  for (j = 0; j < numberOfRows; j++){
-    $("tr").append("<td></td>");
-    $("div.game_board td").addClass(chosenDeck);
-    $("div.game_board td").on("click", cardClick);
+  if (numberOfRows) {
+    $("div.game_board td").removeClass().addClass(chosenDeck);
+    $("#defaultImage").css("display", "none");
+    $("tr").detach();
+    for (i = 0; i < numberOfRows; i++){
+      $("div.game_board table").append("<tr></tr>");
+    }
+    for (j = 0; j < numberOfRows; j++){
+      $("tr").append("<td></td>");
+      $("div.game_board td").addClass(chosenDeck);
+      $("div.game_board td").on("click", cardClick);
+    }
+  } else {
+        $("#defaultImage").removeClass().addClass(chosenDeck);
   }
 });
 
@@ -40,16 +27,15 @@ $("#nameInput").on("keypress", function(event){
   }
 });
 
-//change number of cards (<p>) depending on option clicked
-//when new game is clicked:
-  //message in header is hidden - done
-  //options are locked - done
-  //timer is started if used
+
 $("#newGame").on("click", function(){
-  $("#newGameMessage").css("visibility", "hidden");
-  $("input:radio").attr("disabled" , true);
-  assignValues();
-  //startTimer();
+  var numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
+  if (numberOfRows){
+    $("#newGameMessage").css("visibility", "hidden");
+    $("input:radio").attr("disabled" , true);
+    assignValues();
+    //startTimer();
+  }
 });
 
 var clickCounter = 0;
