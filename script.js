@@ -18,6 +18,7 @@ $("input[name='deckDesign']").on("click", function(){
 $("#newGame").on("click", function(){
   $("#newGameMessage").hide();
   $("input:radio").attr("disabled" , true);
+  assignValues();
   //startTimer();
 });
 
@@ -35,14 +36,14 @@ $("div.game_board td").on("click", function(){
     console.log(clickCounter);
     $(this).addClass("flipped");
     firstCard = $(this);
-    firstCardValue = $(this).text();
+    firstCardValue = $(this).val();
     console.log(firstCardValue);
   } else {
     clickCounter = 0;
     console.log(clickCounter);
     $(this).addClass("flipped");
     secondCard = $(this);
-    secondCardValue = $(this).text();
+    secondCardValue = $(this).val();
     console.log(secondCardValue);
     compareCards();
   }
@@ -79,3 +80,30 @@ function compareCards(){
   //background image is removed
   //centered text is shown
   //guesses counter is increased
+
+var cardLibrary = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+function assignValues(){
+  shuffle(cardLibrary);
+  console.log(cardLibrary);
+  for (i=0; i < cardLibrary.length; i++){
+    $("div.game_board td").eq(i).val(cardLibrary[i]);
+  }
+};
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
