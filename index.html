@@ -34,6 +34,7 @@
   <div class="container">
     <div class="game_options">
     <!--game options include back of card design, new game button, difficulty levels-->
+    <div class="option_forms">
     <form class="deckDesign">
       <p>Deck Design</p>
       <input type="radio" name="deckDesign" value="deckOne" checked> GA Logo<br>
@@ -42,38 +43,20 @@
     </form>
     <form class="boardSize">
       <p>How Many Cards</p>
-      <input type="radio" name="boardSize" value="sizeOne" checked> 4 x 4<br>
+      <input type="radio" name="boardSize" value="sizeOne"> 4 x 4<br>
       <input type="radio" name="boardSize" value="sizeTwo"> 6 x 6<br>
+      <input type="radio" name="boardSize" value="sizeThree"> 8 x 8<br>
     </form>
+  </div>
       <button id="newGame">New Game</button>
     </div>
 
     <div class="game_board">
       <table>
         <tr>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
+          <td id="defaultTable"></td>
         </tr>
-        <tr>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
-        </tr>
-        <tr>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
-        </tr>
-        <tr>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"></td>
-          <td class="defaultDeck"> </td>
-        </tr>
+
       </table>
     </div>
   </div>
