@@ -48,8 +48,8 @@ div.container{
 }
 
 /*need to make sure cards are in a square*/
-div.game_board p{
-  display: inline-block;
+div.game_board td{
+  /*display: inline-block;*/
   width: 100px;
   height: 100px;
   margin: 1em;
@@ -70,6 +70,6 @@ div.game_board p{
 .deckThree{
   background-image: url(images/gene2.gif);
 }
-p.flipped{
+td.flipped{
   background-image: none;
 }
