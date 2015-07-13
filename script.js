@@ -1,14 +1,9 @@
 // can't click cards until new game has been clicked
-$("input[name='deckDesign']").on("click", function(){
+/*$("input[name='deckDesign']").on("click", function(){
   var chosenDeck = $("input[name=deckDesign]:checked").val();
   $("div.game_board td").removeClass().addClass(chosenDeck);
 });
-//get value from board size radio button - sizeone or size two
-//use that value to get number of rows from size library
-//store that value in numberofrows variable
-//append that many tr tags to div.game_board
-//append same number of td tags to each tr tag
-//make sure each td tag has class equal to deckDesign
+
 $("input[name='boardSize']").on("click", function(){
   var numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
   console.log(numberOfRows);
@@ -20,8 +15,22 @@ $("input[name='boardSize']").on("click", function(){
     $("tr").append("<td></td>");
     $("div.game_board td").addClass("defaultDeck");
   }
+});*/
+$(".option_forms input").on("click", function(){
+  var chosenDeck = $("input[name=deckDesign]:checked").val();
+  $("div.game_board td").removeClass().addClass(chosenDeck);
+  var numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
+  console.log(numberOfRows);
+  $("tr").detach();
+  for (i = 0; i < numberOfRows; i++){
+    $("div.game_board table").append("<tr></tr>");
+  }
+  for (j = 0; j < numberOfRows; j++){
+    $("tr").append("<td></td>");
+    $("div.game_board td").addClass(chosenDeck);
+    $("div.game_board td").on("click", cardClick);
+  }
 });
-
 
 $("#nameInput").on("keypress", function(event){
   if(event.keyCode === 13){
@@ -51,7 +60,7 @@ var firstCardValue;
 var secondCard;
 var secondCardValue;
 $("#guesses").text(guessCounter);
-$("div.game_board td").on("click", function(){
+function cardClick(){
   if(!$(this).hasClass("flipped")){
     if(clickCounter === 0){
       clickCounter++;
@@ -69,7 +78,7 @@ $("div.game_board td").on("click", function(){
     }
 
   }
-});
+};
 
 
 function compareCards(){
@@ -90,7 +99,7 @@ function compareCards(){
             },
             1500);
   }
-}
+};
 
 var cardLibrary = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
 function assignValues(){
