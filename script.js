@@ -24,6 +24,7 @@ $("#newGame").on("click", function(){
 
 var clickCounter = 0;
 var guessCounter = 0;
+var matchCounter = 0;
 var firstCard;
 var firstCardValue;
 var secondCard;
@@ -31,21 +32,24 @@ var secondCardValue;
 $("#guesses").text(guessCounter);
 //when a card is clicked
 $("div.game_board td").on("click", function(){
-  if(clickCounter === 0){
-    clickCounter++;
-    console.log(clickCounter);
-    $(this).addClass("flipped");
-    firstCard = $(this);
-    firstCardValue = $(this).val();
-    console.log(firstCardValue);
-  } else {
-    clickCounter = 0;
-    console.log(clickCounter);
-    $(this).addClass("flipped");
-    secondCard = $(this);
-    secondCardValue = $(this).val();
-    console.log(secondCardValue);
-    compareCards();
+  if(!$(this).hasClass("flipped")){
+    if(clickCounter === 0){
+      clickCounter++;
+      console.log(clickCounter);
+      $(this).addClass("flipped");
+      firstCard = $(this);
+      firstCardValue = $(this).val();
+      console.log(firstCardValue);
+    } else {
+      clickCounter = 0;
+      console.log(clickCounter);
+      $(this).addClass("flipped");
+      secondCard = $(this);
+      secondCardValue = $(this).val();
+      console.log(secondCardValue);
+      compareCards();
+    }
+
   }
 });
 
@@ -62,6 +66,7 @@ function compareCards(){
   $("#guesses").text(guessCounter);
   if (firstCardValue === secondCardValue){
     console.log("youve got a match");
+    matchCounter++;
   } else {
     console.log("no match");
     setTimeout(
@@ -91,16 +96,12 @@ function assignValues(){
 };
 
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex ;
-
-  // While there remain elements to shuffle...
+  var currentIndex = array.length;
+  var temporaryValue;
+  var randomIndex;
   while (0 !== currentIndex) {
-
-    // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
-
-    // And swap it with the current element.
     temporaryValue = array[currentIndex];
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
