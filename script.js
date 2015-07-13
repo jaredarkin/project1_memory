@@ -8,18 +8,21 @@ $("input[name='numberOfCards']").on("click", function(){
   var gameSize = $("input[name=numberOfCards]:checked").val();
 });
 
+$("#nameInput").on("keypress", function(event){
+  if(event.keyCode === 13){
+    event.preventDefault();
+    $("#playerName").text($(this).val());
+    $("#nameInput").hide();
+  }
+});
+
 //change number of cards (<p>) depending on option clicked
-//when and where will the user enter name
-  //prompt for it (when)
-  //textbox input - then hide textbox
-  //name is stored as a variable
-  //name is displayed on scoreboard
 //when new game is clicked:
   //message in header is hidden - done
   //options are locked - done
   //timer is started if used
 $("#newGame").on("click", function(){
-  $("#newGameMessage").hide();
+  $("#newGameMessage").css("visibility", "hidden");
   $("input:radio").attr("disabled" , true);
   assignValues();
   //startTimer();
