@@ -1,4 +1,3 @@
-//when window loads, display message in header "please select options and click new game to start"
 // can't click cards until new game has been clicked
 $("input[name='deckDesign']").on("click", function(){
   var chosenDeck = $("input[name=deckDesign]:checked").val();
@@ -30,43 +29,36 @@ var firstCardValue;
 var secondCard;
 var secondCardValue;
 $("#guesses").text(guessCounter);
-//when a card is clicked
 $("div.game_board td").on("click", function(){
   if(!$(this).hasClass("flipped")){
     if(clickCounter === 0){
       clickCounter++;
-      console.log(clickCounter);
       $(this).addClass("flipped");
       firstCard = $(this);
       firstCardValue = $(this).val();
-      console.log(firstCardValue);
+      firstCard.css("background-color", matchLibrary[firstCardValue]);
     } else {
       clickCounter = 0;
-      console.log(clickCounter);
       $(this).addClass("flipped");
       secondCard = $(this);
       secondCardValue = $(this).val();
-      console.log(secondCardValue);
+      secondCard.css("background-color", matchLibrary[secondCardValue]);
       compareCards();
     }
 
   }
 });
 
-//if text matches on both cards
-  //cards remain as they are
-  //click counter resets to 0
-//if text does not match
-  //after a 2 second delay
-  //on both cards the text is hidden
-  //on both cards the image is shown
-  //click counter resets to 0
+
 function compareCards(){
   guessCounter++;
   $("#guesses").text(guessCounter);
   if (firstCardValue === secondCardValue){
     console.log("youve got a match");
     matchCounter++;
+    if (matchCounter == cardLibrary.length/2){
+      alert("Congrats");
+    }
   } else {
     console.log("no match");
     setTimeout(
@@ -77,14 +69,6 @@ function compareCards(){
             1500);
   }
 }
-  //click counter increases to 1
-  //background image on card is removed
-  //centered text is shown
-//when a second card is clicked
-  //click counter increases to 2
-  //background image is removed
-  //centered text is shown
-  //guesses counter is increased
 
 var cardLibrary = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
 function assignValues(){
@@ -94,6 +78,17 @@ function assignValues(){
     $("div.game_board td").eq(i).val(cardLibrary[i]);
   }
 };
+
+var matchLibrary = {
+  1: "red",
+  2: "blue",
+  3: "yellow",
+  4: "green",
+  5: "violet",
+  6: "lemonchiffon",
+  7: "black",
+  8: "aquamarine"
+}
 
 function shuffle(array) {
   var currentIndex = array.length;
