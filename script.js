@@ -34,9 +34,21 @@ $("#newGameButton").on("click", function(){
     $("input:radio").attr("disabled" , true);
     buildCardLibrary();
     assignValues();
+    $("#newGameButton").attr("disabled" , true);
     //startTimer();
   }
 });
+
+function resetGame(){
+  buildCardLibrary();
+  assignValues();
+  guessCounter = 0;
+  $("#guesses").text(guessCounter);
+  $("input:radio").attr("disabled" , false);
+  $("#newGameButton").attr("disabled" , false);
+  $("div.game_board td").removeClass("flipped");
+  //reset timer
+}
 
 function firstLetterOfResponse (response){
   var responseArray = response.split("");
@@ -45,7 +57,7 @@ function firstLetterOfResponse (response){
 $("#resetGameButton").on("click", function(){
   var resetResponse = firstLetterOfResponse(prompt("Are you sure you want to reset the game?\n Y/N")).toLowerCase();
   if (resetResponse == "y"){
-    location.reload();
+      resetGame();
     }
 });
 
@@ -87,7 +99,7 @@ function compareCards(){
     if (matchCounter == cardLibrary.length/2){
       var winnerResponse = firstLetterOfResponse(prompt("Congratulations!\nWould you like to play again?\n Y/N")).toLowerCase();
       if (winnerResponse == "y"){
-        location.reload();
+          resetGame();
       } else {
         alert("Thanks for playing!");
       }
