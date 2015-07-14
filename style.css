@@ -102,7 +102,6 @@ div.game_board td{
   height: 100px;
   margin: 1em;
   border: 1px solid blue;
-  background-color: white;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -117,6 +116,11 @@ div.game_board td{
 }
 .deckThree{
   background-image: url(images/gene2.gif);
+  background-position: 0 -40px;
+}
+
+#defaultImage.deckThree{
+  background-position: 0 -150px;
 }
 td.flipped{
   background-image: none;
