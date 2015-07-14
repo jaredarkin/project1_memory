@@ -7,8 +7,8 @@
 </head>
 <body>
   <header>
-    <h1>Memory</h1>
-    <p id="newGameMessage">Please select options and click New Game to start</p>
+    <h1>ConcentratioN</h1>
+    <p id="newGameMessage">please enter your name, select the game options and click new game to start!</p>
   </header>
   <div class="scoreboard">
     <!--scoreboard includes game number, player names, player scores, timer if included-->
@@ -33,22 +33,21 @@
   </div>
   <div class="container">
     <div class="game_options">
-    <!--game options include back of card design, new game button, difficulty levels-->
-    <div class="option_forms">
-    <form class="deckDesign">
-      <p>Deck Design</p>
-      <input type="radio" name="deckDesign" value="deckOne" checked> GA Logo<br>
-      <input type="radio" name="deckDesign" value="deckTwo"> Cats<br>
-      <input type="radio" name="deckDesign" value="deckThree"> Bob's Burgers<br>
-    </form>
-    <form class="boardSize">
-      <p>How Many Cards</p>
-      <input type="radio" name="boardSize" value="sizeOne"> 4 x 4<br>
-      <input type="radio" name="boardSize" value="sizeTwo"> 6 x 6<br>
-      <input type="radio" name="boardSize" value="sizeThree"> 8 x 8<br>
-    </form>
-  </div>
-      <button id="newGame">New Game</button>
+      <div class="option_forms">
+      <form class="deckDesign">
+        <p class="optionHeader">Deck Design</p>
+        <input type="radio" name="deckDesign" value="deckOne" checked> GA Logo<br>
+        <input type="radio" name="deckDesign" value="deckTwo"> Cats<br>
+        <input type="radio" name="deckDesign" value="deckThree"> Bob's Burgers<br>
+      </form>
+      <form class="boardSize">
+        <p class="optionHeader">How Many Cards</p>
+        <input type="radio" name="boardSize" value="sizeOne"> 4 x 4<br>
+        <input type="radio" name="boardSize" value="sizeTwo"> 6 x 6<br>
+        <input type="radio" name="boardSize" value="sizeThree"> 8 x 8<br>
+      </form>
+      </div>
+        <button id="newGameButton">New Game</button>
     </div>
 
     <div class="game_board">
