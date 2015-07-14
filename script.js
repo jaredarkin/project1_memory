@@ -38,6 +38,17 @@ $("#newGameButton").on("click", function(){
   }
 });
 
+function firstLetterOfResponse (response){
+  var responseArray = response.split("");
+  return responseArray[0];
+}
+$("#resetGameButton").on("click", function(){
+  var resetResponse = firstLetterOfResponse(prompt("Are you sure you want to reset the game?\n Y/N")).toLowerCase();
+  if (resetResponse == "y"){
+    location.reload();
+    }
+});
+
 var clickCounter = 0;
 var guessCounter = 0;
 var matchCounter = 0;
@@ -74,7 +85,12 @@ function compareCards(){
     console.log("youve got a match");
     matchCounter++;
     if (matchCounter == cardLibrary.length/2){
-      alert("Congrats");
+      var winnerResponse = firstLetterOfResponse(prompt("Congratulations!\nWould you like to play again?\n Y/N")).toLowerCase();
+      if (winnerResponse == "y"){
+        location.reload();
+      } else {
+        alert("Thanks for playing!");
+      }
     }
   } else {
     console.log("no match");
@@ -83,7 +99,7 @@ function compareCards(){
                 firstCard.removeClass("flipped");
                 secondCard.removeClass("flipped");
             },
-            1500);
+            1000);
   }
 };
 
