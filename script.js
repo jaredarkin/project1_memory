@@ -12,7 +12,6 @@ $(".option_forms input").on("click", function(){
     for (j = 0; j < numberOfRows; j++){
       $("tr").append("<td></td>");
       $("div.game_board td").addClass(chosenDeck);
-      $("div.game_board td").on("click", cardClick);
     }
   } else {
         $("#defaultImage").removeClass().addClass(chosenDeck);
@@ -30,6 +29,7 @@ $("#nameInput").on("keypress", function(event){
 
 $("#newGameButton").on("click", function(){
   if (numberOfRows){
+    $("div.game_board td").on("click", cardClick);
     $("#newGameMessage").css("visibility", "hidden");
     $("input:radio").attr("disabled" , true);
     buildCardLibrary();
@@ -47,6 +47,7 @@ function resetGame(){
   $("input:radio").attr("disabled" , false);
   $("#newGameButton").attr("disabled" , false);
   $("div.game_board td").removeClass("flipped");
+  $("div.game_board td").off("click", cardClick);
   //reset timer
 }
 
