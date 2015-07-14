@@ -95,6 +95,7 @@ input[type=radio]{
   height: 400px;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-top: 0;
 }
 
 div.game_board td{
