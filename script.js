@@ -32,7 +32,7 @@ $("#newGameButton").on("click", function(){
     $("div.game_board td").on("click", cardClick);
     $("#newGameMessage").css("visibility", "hidden");
     $("input:radio").attr("disabled" , true);
-    buildCardLibrary();
+    buildcardIndex();
     assignValues();
     $("#newGameButton").attr("disabled" , true);
     //startTimer();
@@ -40,12 +40,13 @@ $("#newGameButton").on("click", function(){
 });
 
 function resetGame(){
-  buildCardLibrary();
+  buildcardIndex();
   assignValues();
   guessCounter = 0;
   $("#guesses").text(guessCounter);
   $("input:radio").attr("disabled" , false);
   $("#newGameButton").attr("disabled" , false);
+  $("#newGameMessage").css("visibility", "visible");
   $("div.game_board td").removeClass("flipped");
   $("div.game_board td").off("click", cardClick);
   //reset timer
@@ -97,7 +98,7 @@ function compareCards(){
   if (firstCardValue === secondCardValue){
     console.log("youve got a match");
     matchCounter++;
-    if (matchCounter == cardLibrary.length/2){
+    if (matchCounter == cardIndex.length/2){
       var winnerResponse = firstLetterOfResponse(prompt("Congratulations!\nWould you like to play again?\n Y/N")).toLowerCase();
       if (winnerResponse == "y"){
           resetGame();
@@ -118,18 +119,18 @@ function compareCards(){
   }
 };
 
-var cardLibrary = [];
-function buildCardLibrary(){
+var cardIndex = [];
+function buildcardIndex(){
   for (i = 1; i <= (numberOfRows * numberOfRows)/2; i++){
-    cardLibrary.push(i);
-    cardLibrary.push(i);
+    cardIndex.push(i);
+    cardIndex.push(i);
   }
 }
 function assignValues(){
-  shuffle(cardLibrary);
-  console.log(cardLibrary);
-  for (i=0; i < cardLibrary.length; i++){
-    $("div.game_board td").eq(i).val(cardLibrary[i]);
+  shuffle(cardIndex);
+  console.log(cardIndex);
+  for (i=0; i < cardIndex.length; i++){
+    $("div.game_board td").eq(i).val(cardIndex[i]);
   }
 };
 
