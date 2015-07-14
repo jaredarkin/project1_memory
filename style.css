@@ -3,16 +3,18 @@
 }
 
 body{
-  background-color: #d6d6d6;
+  background-color: #fffaf0;
   color: black;
+  font-family: copperplate;
+
 }
 header{
-
+  font-size: 20px;
+  text-align: center;
 }
 
 h1{
-  font-size: 40px;
-  font-family: Verdana, sans-serif;
+  font-size: 60px;
   color: red;
   text-align: center;
 }
@@ -22,23 +24,47 @@ div.container{
   display: -webkit-flex;
 }
 .scoreboard{
-  border: 2px solid blue;
+  border-top: 4px solid blue;
+  border-bottom: 4px solid blue;
 }
 
 .game_info{
   list-style: none;
   overflow: auto;
+  padding-left: 147px;
+  margin-left: 7em;
+  margin-right: 5em;
 }
 
 .game_info li{
   float: left;
-  width: 30%;
-  margin: auto;
+  width: 33%;
 }
 
 .game_options{
   border: 2px solid green;
   width: 25%;
+}
+
+.optionHeader{
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+}
+
+input[type=radio]{
+  margin-left: 2em;
+}
+
+#newGameButton{
+  margin-top: 2em;
+  font-size: 20px;
+  color: red;
+  font-family: copperplate;
+  background-color: gainsboro;
+  border-radius: 5px;
+  margin-left: 88px;
 }
 
 .game_board{
