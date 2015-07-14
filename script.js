@@ -35,7 +35,7 @@ $("#newGameButton").on("click", function(){
     buildcardIndex();
     assignValues();
     $("#newGameButton").attr("disabled" , true);
-    //startTimer();
+    startTimer();
   }
 });
 
@@ -49,7 +49,7 @@ function resetGame(){
   $("#newGameMessage").css("visibility", "visible");
   $("div.game_board td").removeClass("flipped");
   $("div.game_board td").off("click", cardClick);
-  //reset timer
+  resetTimer();
 }
 
 function firstLetterOfResponse (response){
@@ -174,3 +174,24 @@ function shuffle(array) {
   }
   return array;
 }
+
+var stopWatchValue = 0;
+var stopWatchMinutes = 0;
+var seconds;
+function startTimer(){
+  seconds = setInterval(increaseTimer, 1000)
+};
+function increaseTimer(){
+  stopWatchValue++;
+  stopWatchString = "0" + (stopWatchValue % 60);
+  if ((stopWatchValue % 60) === 0){
+    stopWatchMinutes++;
+  }
+  $("#timer").text(stopWatchMinutes + ":" + stopWatchString.slice(-2));
+};
+function resetTimer(){
+  stopWatchValue = 0;
+  stopWatchMinutes = 0;
+  $("#timer").text("0:00");
+  clearInterval(seconds);
+};
