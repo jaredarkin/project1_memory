@@ -105,11 +105,13 @@ function compareCards(){
       }
     }
   } else {
+    $("div.game_board td").off("click", cardClick);
     console.log("no match");
     setTimeout(
             function() {
                 firstCard.removeClass("flipped");
                 secondCard.removeClass("flipped");
+                $("div.game_board td").on("click", cardClick);
             },
             1000);
   }
