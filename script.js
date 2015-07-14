@@ -28,7 +28,7 @@ $("#nameInput").on("keypress", function(event){
 });
 
 
-$("#newGame").on("click", function(){
+$("#newGameButton").on("click", function(){
   if (numberOfRows){
     $("#newGameMessage").css("visibility", "hidden");
     $("input:radio").attr("disabled" , true);
@@ -89,7 +89,7 @@ function compareCards(){
 
 var cardLibrary = [];
 function buildCardLibrary(){
-  for (i = 1; i <= (numberOfRows*numberOfRows)/2; i++){
+  for (i = 1; i <= (numberOfRows * numberOfRows)/2; i++){
     cardLibrary.push(i);
     cardLibrary.push(i);
   }
