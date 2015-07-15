@@ -3,9 +3,11 @@
   if !false then complete the actions; if false, change image to chosen deck
   when size option is clicked, detach all rows so it appends to an empty table; hide image*/
 var numberOfRows;
+var numberOfColumns;
 $(".option_forms input").on("click", function(){
   var chosenDeck = $("input[name=deckDesign]:checked").val();
-  numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()];
+  numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()][0];
+  numberOfColumns = sizeLibrary[$("input[name=boardSize]:checked").val()][1];
   if (numberOfRows) {
     $("div.game_board td").removeClass().addClass(chosenDeck);
     $("#defaultImage").css("display", "none");
@@ -13,7 +15,7 @@ $(".option_forms input").on("click", function(){
     for (i = 0; i < numberOfRows; i++){
       $("div.game_board table").append("<tr></tr>");
     }
-    for (j = 0; j < numberOfRows; j++){
+    for (j = 0; j < numberOfColumns; j++){
       $("tr").append("<td></td>");
       $("div.game_board td").addClass(chosenDeck);
     }
@@ -140,7 +142,7 @@ function compareCards(){
 
 var cardIndex = [];
 function buildCardIndex(){
-  for (i = 1; i <= (numberOfRows * numberOfRows)/2; i++){
+  for (i = 1; i <= (numberOfRows * numberOfColumns)/2; i++){
     cardIndex.push(i);
     cardIndex.push(i);
   }
@@ -180,9 +182,9 @@ var colorLibrary = {
 }
 
 var sizeLibrary = {
-  sizeOne: 4,
-  sizeTwo: 6,
-  sizeThree: 8
+  sizeOne: [4,4],
+  sizeTwo: [4,6],
+  sizeThree: [6,6]
 }
 
 function shuffle(array) {
