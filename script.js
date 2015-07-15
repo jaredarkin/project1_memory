@@ -61,6 +61,7 @@ function resetGame(){
   $("#newGameMessage").css("visibility", "visible");
   $("div.game_board td").removeClass("flipped");
   $("div.game_board td").off("click", cardClick);
+  cardIndex = [];
   resetTimer();
 }
 
@@ -108,6 +109,8 @@ function cardClick(){
   }
 };
 
+//need to delay matchcounter increment and alert until after last card shows in safari
+//card shows before delay in chrome
 function compareCards(){
   guessCounter++;
   $("#guesses").text(guessCounter);
