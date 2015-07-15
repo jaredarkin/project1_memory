@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <link type="text/css" rel="stylesheet" href="style.css">
-  <title>Memory</title>
+  <title>Concentration Game</title>
 </head>
 <body>
   <header>
     <h1>CONCENTRATION</h1>
-    <p id="newGameMessage">please enter your name, select the game options and click new game to start!</p>
+    <p id="newGameMessage">Please enter your name, select the game options and click new game to start!</p>
   </header>
   <div class="scoreboard">
-    <!--scoreboard includes game number, player names, player scores, timer if included-->
-    <!--maybe use <label> for game, name, timer, etc.-->
     <ul class="game_info">
       <li>
         <form>
-          <p>Player name:<p>
+          <p>Player Name:<p>
           <input type="text" id="nameInput">
           <p id="playerName"></p>
         </form>
@@ -41,10 +39,10 @@
         <input type="radio" name="deckDesign" value="deckThree"> Bob's Burgers<br>
       </form>
       <form class="boardSize">
-        <p class="optionHeader">How Many Cards</p>
+        <p class="optionHeader">How Many Cards?</p>
         <input type="radio" name="boardSize" value="sizeOne"> 4 x 4<br>
-        <input type="radio" name="boardSize" value="sizeTwo"> 6 x 6<br>
-        <input type="radio" name="boardSize" value="sizeThree"> 8 x 8<br>
+        <input type="radio" name="boardSize" value="sizeTwo"> 4 x 6<br>
+        <input type="radio" name="boardSize" value="sizeThree"> 6 x 6<br>
       </form>
       </div>
       <div class="buttonContainer">
