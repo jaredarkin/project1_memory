@@ -5,7 +5,7 @@
 body{
   background-color: #fffaf0;
   color: black;
-  font-family: copperplate;
+  font-family: copperplate, verdana, sans-serif;
 
 }
 header{
@@ -64,23 +64,25 @@ input[type=radio]{
   margin-left: 2em;
 }
 
+.buttonContainer{
+  text-align: center;
+}
+
 #newGameButton{
   margin-top: 2em;
   font-size: 20px;
   color: red;
-  font-family: copperplate;
+  font-family: copperplate, verdana, sans-serif;
   background-color: gainsboro;
   border-radius: 5px;
-  margin-left: 88px;
 }
 #resetGameButton{
   margin-top: 1em;
   font-size: 20px;
   color: red;
-  font-family: copperplate;
+  font-family: copperplate, verdana, sans-serif;
   background-color: gainsboro;
   border-radius: 5px;
-  margin-left: 78.5px;
 }
 
 .game_board{
