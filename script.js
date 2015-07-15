@@ -1,3 +1,7 @@
+/*number of rows must be global- created by option buttons, used in new game function
+  if board size isn't chosen, number of rows is false
+  if !false then complete the actions; if false, change image to chosen deck
+  when size option is clicked, detach all rows so it appends to an empty table; hide image*/
 var numberOfRows;
 $(".option_forms input").on("click", function(){
   var chosenDeck = $("input[name=deckDesign]:checked").val();
@@ -18,6 +22,7 @@ $(".option_forms input").on("click", function(){
   }
 });
 
+//after name is entered, pressing enter hides input box and displays name
 $("#nameInput").on("keypress", function(event){
   if(event.keyCode === 13){
     event.preventDefault();
@@ -26,7 +31,14 @@ $("#nameInput").on("keypress", function(event){
   }
 });
 
-
+/*new game button should
+  build card index based on board size chosen
+  assign values to each td
+  add event listeners to each td
+  disable option buttons so they can't be changed during the game
+  start timer
+  if a board size has not been chosen, do not do anything
+    prevents clicking on game board before new game is clicked*/
 $("#newGameButton").on("click", function(){
   if (numberOfRows){
     $("div.game_board td").on("click", cardClick);
@@ -52,12 +64,18 @@ function resetGame(){
   resetTimer();
 }
 
+//used to only get lowercase y or n from prompt for use in conditional
 function firstLetterOfResponse (response){
   var responseArray = response.split("");
-  return responseArray[0];
+  return responseArray[0].toLowerCase();
 }
+
+/*prompt when reset button is pressed
+  if y, run reset game
+  if not y, do nothing, go back to game
+    potentially add more conditionals to prevent random inputs*/
 $("#resetGameButton").on("click", function(){
-  var resetResponse = firstLetterOfResponse(prompt("Are you sure you want to reset the game?\n Y/N")).toLowerCase();
+  var resetResponse = firstLetterOfResponse(prompt("Are you sure you want to reset the game?\n Y/N"));
   if (resetResponse == "y"){
       resetGame();
     }
@@ -87,10 +105,8 @@ function cardClick(){
       secondCard.css("background-color", colorLibrary[secondCardValue]);
       compareCards();
     }
-
   }
 };
-
 
 function compareCards(){
   guessCounter++;
@@ -99,7 +115,7 @@ function compareCards(){
     console.log("youve got a match");
     matchCounter++;
     if (matchCounter == cardIndex.length/2){
-      var winnerResponse = firstLetterOfResponse(prompt("Congratulations!\nWould you like to play again?\n Y/N")).toLowerCase();
+      var winnerResponse = firstLetterOfResponse(prompt("Congratulations!\nWould you like to play again?\n Y/N"));
       if (winnerResponse == "y"){
           resetGame();
       } else {
@@ -175,6 +191,10 @@ function shuffle(array) {
   return array;
 }
 
+
+/*timer function should start on new game, reset on reset game
+  should show minutes and seconds
+  string adds a leading zero to the value, slice -2 only shows the last two elements of the string*/
 var stopWatchValue = 0;
 var stopWatchMinutes = 0;
 var seconds;
