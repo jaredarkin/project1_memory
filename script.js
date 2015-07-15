@@ -1,10 +1,15 @@
 var numberOfRows;
 var numberOfColumns;
+var sizeChecked;
+var chosenDeck;
 $(".option_forms input").on("click", function(){
-  var chosenDeck = $("input[name=deckDesign]:checked").val();
-  numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()][0];
-  numberOfColumns = sizeLibrary[$("input[name=boardSize]:checked").val()][1];
-  if (numberOfRows) {
+  chosenDeck = $("input[name=deckDesign]:checked").val();
+  sizeChecked = $("input[name=boardSize]:checked").val();
+  /*if a radio button for board size is not checked, the value of the input is undefined.
+    the value is assigned to sizeChecked which is used in the conditional*/
+  if (sizeChecked) {
+    numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()][0];
+    numberOfColumns = sizeLibrary[$("input[name=boardSize]:checked").val()][1];
     $("div.game_board td").removeClass().addClass(chosenDeck);
     $("#defaultImage").css("display", "none");
     $("tr").detach();
@@ -29,10 +34,10 @@ $("#nameInput").on("keypress", function(event){
   }
 });
 
-/*if numberOfRows is undefined because a board size hasn't been chosen
+/*if sizeChecked is undefined because a board size hasn't been chosen
   do not run new game functions*/
 $("#newGameButton").on("click", function(){
-  if (numberOfRows){
+  if (sizeChecked){
     $("div.game_board td").on("click", cardClick);
     $("#newGameMessage").css("visibility", "hidden");
     $("input:radio").attr("disabled" , true);
