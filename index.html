@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <title>Memory</title>
+</head>
+<body>
+  <header>
+    <h1>ConcentratioN</h1>
+    <p id="newGameMessage">please enter your name, select the game options and click new game to start!</p>
+  </header>
+  <div class="scoreboard">
+    <!--scoreboard includes game number, player names, player scores, timer if included-->
+    <!--maybe use <label> for game, name, timer, etc.-->
+    <ul class="game_info">
+      <li>
+        <form>
+          <p>Player name:<p>
+          <input type="text" id="nameInput">
+          <p id="playerName"></p>
+        </form>
+      </li>
+      <li>
+        <p>Guesses: </p>
+        <p id="guesses">1</p>
+      </li>
+      <li>
+        <p>Timer</p>
+        <p id="timer">0:00</p>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="game_options">
+      <div class="option_forms">
+      <form class="deckDesign">
+        <p class="optionHeader">Deck Design</p>
+        <input type="radio" name="deckDesign" value="deckOne" checked> GA Logo<br>
+        <input type="radio" name="deckDesign" value="deckTwo"> Cats<br>
+        <input type="radio" name="deckDesign" value="deckThree"> Bob's Burgers<br>
+      </form>
+      <form class="boardSize">
+        <p class="optionHeader">How Many Cards</p>
+        <input type="radio" name="boardSize" value="sizeOne"> 4 x 4<br>
+        <input type="radio" name="boardSize" value="sizeTwo"> 6 x 6<br>
+        <input type="radio" name="boardSize" value="sizeThree"> 8 x 8<br>
+      </form>
+      </div>
+        <button id="newGameButton">New Game</button>
+        <button id="resetGameButton">Reset Game</button>
+    </div>
+
+    <div class="game_board">
+      <p class="defaultDeck" id="defaultImage"></p>
+      <table>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src='script.js'></script>
+
+</body>
+</html>
