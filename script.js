@@ -44,7 +44,7 @@ $("#newGameButton").on("click", function(){
     $("div.game_board td").on("click", cardClick);
     $("#newGameMessage").css("visibility", "hidden");
     $("input:radio").attr("disabled" , true);
-    buildcardIndex();
+    buildCardIndex();
     assignValues();
     $("#newGameButton").attr("disabled" , true);
     startTimer();
@@ -52,16 +52,15 @@ $("#newGameButton").on("click", function(){
 });
 
 function resetGame(){
-  buildcardIndex();
-  assignValues();
+  clearCardIndex();
   guessCounter = 0;
+  matchCounter = 0;
   $("#guesses").text(guessCounter);
   $("input:radio").attr("disabled" , false);
   $("#newGameButton").attr("disabled" , false);
   $("#newGameMessage").css("visibility", "visible");
   $("div.game_board td").removeClass("flipped");
   $("div.game_board td").off("click", cardClick);
-  cardIndex = [];
   resetTimer();
 }
 
@@ -109,11 +108,9 @@ function cardClick(){
   }
 };
 
-<<<<<<< HEAD
+
 //need to delay matchcounter increment and alert until after last card shows in safari
 //card shows before delay in chrome
-=======
->>>>>>> 0c683e2e1d709b586520ddd098e257ef30ccc5f3
 function compareCards(){
   guessCounter++;
   $("#guesses").text(guessCounter);
@@ -142,10 +139,15 @@ function compareCards(){
 };
 
 var cardIndex = [];
-function buildcardIndex(){
+function buildCardIndex(){
   for (i = 1; i <= (numberOfRows * numberOfRows)/2; i++){
     cardIndex.push(i);
     cardIndex.push(i);
+  }
+}
+function clearCardIndex(){
+  while (cardIndex.length > 0){
+    cardIndex.pop();
   }
 }
 function assignValues(){
