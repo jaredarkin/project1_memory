@@ -61,7 +61,7 @@ function resetGame(){
   $("#newGameMessage").css("visibility", "visible");
   $("div.game_board td").removeClass("flipped");
   $("div.game_board td").off("click", cardClick);
-  cardIndex = [];
+  cardIndex.length = 0;
   resetTimer();
 }
 
