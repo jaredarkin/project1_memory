@@ -1,7 +1,3 @@
-/*number of rows must be global- created by option buttons, used in new game function
-  if board size isn't chosen, number of rows is false
-  if !false then complete the actions; if false, change image to chosen deck
-  when size option is clicked, detach all rows so it appends to an empty table; hide image*/
 var numberOfRows;
 var numberOfColumns;
 $(".option_forms input").on("click", function(){
@@ -33,14 +29,8 @@ $("#nameInput").on("keypress", function(event){
   }
 });
 
-/*new game button should
-  build card index based on board size chosen
-  assign values to each td
-  add event listeners to each td
-  disable option buttons so they can't be changed during the game
-  start timer
-  if a board size has not been chosen, do not do anything
-    prevents clicking on game board before new game is clicked*/
+/*if numberOfRows is undefined because a board size hasn't been chosen
+  do not run new game functions*/
 $("#newGameButton").on("click", function(){
   if (numberOfRows){
     $("div.game_board td").on("click", cardClick);
@@ -72,10 +62,8 @@ function firstLetterOfResponse (response){
   return responseArray[0].toLowerCase();
 }
 
-/*prompt when reset button is pressed
-  if y, run reset game
-  if not y, do nothing, go back to game
-    potentially add more conditionals to prevent random inputs*/
+/*prompt when reset button is pressed. if y, run reset game
+  if not y, do nothing, go back to game. potentially add more conditionals to prevent random inputs*/
 $("#resetGameButton").on("click", function(){
   var resetResponse = firstLetterOfResponse(prompt("Are you sure you want to reset the game?\n Y/N"));
   if (resetResponse == "y"){
@@ -110,14 +98,12 @@ function cardClick(){
   }
 };
 
-
-//need to delay matchcounter increment and alert until after last card shows in safari
-//card shows before delay in chrome
+/*remove event listeners from board if not a match to prevent extra clicks
+  add listeners back after cards have been "flipped" back over*/
 function compareCards(){
   guessCounter++;
   $("#guesses").text(guessCounter);
   if (firstCardValue === secondCardValue){
-    console.log("youve got a match");
     matchCounter++;
     if (matchCounter == cardIndex.length/2){
       var winnerResponse = firstLetterOfResponse(prompt("Congratulations!\nWould you like to play again?\n Y/N"));
@@ -129,7 +115,6 @@ function compareCards(){
     }
   } else {
     $("div.game_board td").off("click", cardClick);
-    console.log("no match");
     setTimeout(
             function() {
                 firstCard.removeClass("flipped");
@@ -140,6 +125,9 @@ function compareCards(){
   }
 };
 
+/* cardIndex functions: build index based on size of board
+  clear index on reset
+  assign values to each td element on new game click*/
 var cardIndex = [];
 function buildCardIndex(){
   for (i = 1; i <= (numberOfRows * numberOfColumns)/2; i++){
@@ -154,7 +142,6 @@ function clearCardIndex(){
 }
 function assignValues(){
   shuffle(cardIndex);
-  console.log(cardIndex);
   for (i=0; i < cardIndex.length; i++){
     $("div.game_board td").eq(i).val(cardIndex[i]);
   }
@@ -181,12 +168,14 @@ var colorLibrary = {
   18: "Olive"
 }
 
+/*more sizes can be added if color library is expanded*/
 var sizeLibrary = {
   sizeOne: [4,4],
   sizeTwo: [4,6],
   sizeThree: [6,6]
 }
 
+//Fisher-Yates Shuffle function
 function shuffle(array) {
   var currentIndex = array.length;
   var temporaryValue;
@@ -201,9 +190,7 @@ function shuffle(array) {
   return array;
 }
 
-
 /*timer function should start on new game, reset on reset game
-  should show minutes and seconds
   string adds a leading zero to the value, slice -2 only shows the last two elements of the string*/
 var stopWatchValue = 0;
 var stopWatchMinutes = 0;
