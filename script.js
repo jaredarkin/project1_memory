@@ -109,8 +109,11 @@ function cardClick(){
   }
 };
 
+<<<<<<< HEAD
 //need to delay matchcounter increment and alert until after last card shows in safari
 //card shows before delay in chrome
+=======
+>>>>>>> 0c683e2e1d709b586520ddd098e257ef30ccc5f3
 function compareCards(){
   guessCounter++;
   $("#guesses").text(guessCounter);
