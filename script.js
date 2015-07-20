@@ -2,16 +2,24 @@ var numberOfRows;
 var numberOfColumns;
 var sizeChecked;
 var chosenDeck;
+
+// use whitespace (new lines) to make your code more readable.
 $(".option_forms input").on("click", function(){
+  // really like the direct mapping here of input values to CSS classes! great job
   chosenDeck = $("input[name=deckDesign]:checked").val();
   sizeChecked = $("input[name=boardSize]:checked").val();
   /*if a radio button for board size is not checked, the value of the input is undefined.
     the value is assigned to sizeChecked which is used in the conditional*/
   if (sizeChecked) {
+    // this works becuase of variable hoisting, (and that this code doesn't run until the user clicks)
+    // but it's weird to me that you define sizeLibrary
+    // down at the bottom instead of above here.
     numberOfRows = sizeLibrary[$("input[name=boardSize]:checked").val()][0];
     numberOfColumns = sizeLibrary[$("input[name=boardSize]:checked").val()][1];
     $("div.game_board td").removeClass().addClass(chosenDeck);
     $("#defaultImage").css("display", "none");
+
+    // I'd suggest extracting this out into a a function like 'buildGameBoard'
     $("tr").detach();
     for (i = 0; i < numberOfRows; i++){
       $("div.game_board table").append("<tr></tr>");
@@ -39,8 +47,13 @@ $("#nameInput").on("keypress", function(event){
 $("#newGameButton").on("click", function(){
   if (sizeChecked){
     $("div.game_board td").on("click", cardClick);
+    // you can use .hide() here for the same effect.
     $("#newGameMessage").css("visibility", "hidden");
     $("input:radio").attr("disabled" , true);
+
+    // I like the use of functions here, but I'd suggest keeping logically related
+    // lines together for readability. E.g. move the jquery line below up with
+    // the other lines that modify the input form
     buildCardIndex();
     assignValues();
     $("#newGameButton").attr("disabled" , true);
@@ -102,6 +115,12 @@ function cardClick(){
     }
   }
 };
+
+// I like your approach in general to handling user clicks, but I'd try to
+// refactor this code so your compareCards function only compares cards,
+// and you have another function that handles UI state.
+// That said, the setTimeout is a nice solution in general to makeing the
+// game playable.
 
 /*remove event listeners from board if not a match to prevent extra clicks
   add listeners back after cards have been "flipped" back over*/
@@ -194,6 +213,9 @@ function shuffle(array) {
   }
   return array;
 }
+
+// nice job here! I like the comments that clearly explain the possibly con-
+// fusing part (slice.)
 
 /*timer function should start on new game, reset on reset game
   string adds a leading zero to the value, slice -2 only shows the last two elements of the string*/
